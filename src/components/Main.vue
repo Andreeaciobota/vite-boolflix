@@ -8,7 +8,14 @@
  <ul>
    <li v-if="item.hasOwnProperty('original_title')"> Titolo originale: {{item.original_title}} </li>
    <li v-if="item.hasOwnProperty('original_name')"> Titolo originale: {{item.original_name}} </li>
-   <li> Lingua: {{item.original_language}} </li>
+   <!---<li>
+                Lingua: 
+               <img 
+                   class="language" v-if="langFunction(item) !== ''" :src="langFunction(item)"
+                  :alt="item.original_language"
+               >
+               <span v-else>{{ item.original_language }}</span>
+            </li> ---->
    <li> Voto: {{item.vote_average}} </li>   
    <li> Trama: {{item.overview}} </li>   
  </ul>
@@ -28,7 +35,7 @@ export default {
   props:{
      arrayConcat: Array
   },
-  isMovie: false,
+ 
 }
 </script>
 

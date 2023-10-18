@@ -44,6 +44,7 @@ export default {
       .then( r => {
         this.resultsArray = r.data.results;
       })
+    //  this.arrayConcat = this.resultsArray.concat(this.resultsArrayTv)
       .catch( e => {
         console.log(e);
       })
@@ -53,27 +54,13 @@ export default {
       .then( resp => {
         this.resultsArrayTv = resp.data.results;
         this.arrayConcat = this.resultsArray.concat(this.resultsArrayTv);
-        // console.log('search query',this.querySearch);
-        // console.log('array film',this.resultsArray);
-        // console.log('array tv',this.resultsArrayTv);
-        // console.log('array concatenato', this.arrayConcat);
+       
       })
       .catch( e => {
         console.log(e);
       })
     },
-    // concatFunction(){
-    //   if(this.resultsArray.length > 0 || this.resultsArrayTv.length > 0 ){
-    //     this.arrayConcat = [...this.resultsArray, ...this.resultsArrayTv]
-    //   }else if(this.resultsArray.length > 0 || this.resultsArrayTv.length < 1 ){
-    //     this.arrayConcat = this.resultsArray;
-    //   }else if(this.resultsArray.length < 1 || this.resultsArrayTv.length > 0 ){
-    //     this.arrayConcat = this.resultsArrayTv;
-    //   }else{
-    //     this.arrayConcat;
-    //   }
-    //   return this.arrayConcat  
-    // },
+   
     querySearchFunction(text){
       this.querySearch = text;
        this.getApiMovie();
