@@ -1,13 +1,9 @@
 <template>
   <div class="wrapper">
-
     <Header @sendQuerySearch="querySearchFunction"/>
-
     <Main :arrayConcat="arrayConcat" />
-
   </div>
 </template>
-
 <script>
 import Header from './components/Header.vue'
 import Main from './components/Main.vue'
@@ -20,15 +16,12 @@ export default {
     return{
       resultsArray: [],
       resultsArrayTv: [],
-
       arrayConcat: [],
-
       apiKey: 'api_key=9e5618652a0a8b25f8c8b66afcae4685&',
       filmserie: 'Film',
       querySearch: '',
       language: '&language=it_IT',
       page: '&page=1',
-
       apiURLmovie:'https://api.themoviedb.org/3/search/movie?',
       apiURLtv:'https://api.themoviedb.org/3/search/tv?',
     }
@@ -44,7 +37,12 @@ export default {
       .then( r => {
         this.resultsArray = r.data.results;
       })
-    //  this.arrayConcat = this.resultsArray.concat(this.resultsArrayTv)
+    this.arrayConcat = this.resultsArray.concat(this.resultsArrayTv)
+    // Dentro il metodo getApiMovie() dopo aver ottenuto i risultati dalla chiamata API
+this.resultsArray = r.data.results.map(item => {
+  item.poster_path = `https://image.tmdb.org/t/p/w500/${item.poster_path}`;
+  return item;
+})
       .catch( e => {
         console.log(e);
       })
@@ -54,7 +52,12 @@ export default {
       .then( resp => {
         this.resultsArrayTv = resp.data.results;
         this.arrayConcat = this.resultsArray.concat(this.resultsArrayTv);
-       
+       // Dentro il metodo getApiMovie() dopo aver ottenuto i risultati dalla chiamata API
+      this.resultsArray = r.data.results.map(item => {
+      item.poster_path = `https://image.tmdb.org/t/p/w500/${item.poster_path}`;
+        return item;
+})
+
       })
       .catch( e => {
         console.log(e);
@@ -75,7 +78,6 @@ export default {
   }
 }
 </script>
-
 <style lang="scss">
  @import "src/style/generals.scss";
  @import "src/style/utilities.scss";

@@ -1,30 +1,15 @@
 <template>
   <main class="fc-container fc-flex fc-wrap">
     <div v-for="item in arrayConcat" :key="item.id" class="card">
-
-<h2 v-if="item.hasOwnProperty('title')"> {{item.title}} </h2>
-<h2 v-if="item.hasOwnProperty('name')"> {{item.name}} </h2>
-
- <ul>
-   <li v-if="item.hasOwnProperty('original_title')"> Titolo originale: {{item.original_title}} </li>
-   <li v-if="item.hasOwnProperty('original_name')"> Titolo originale: {{item.original_name}} </li>
-   <!---<li>
-                Lingua: 
-               <img 
-                   class="language" v-if="langFunction(item) !== ''" :src="langFunction(item)"
-                  :alt="item.original_language"
-               >
-               <span v-else>{{ item.original_language }}</span>
-            </li> ---->
-   <li> Voto: {{item.vote_average}} </li>   
-   <li> Trama: {{item.overview}} </li>   
- </ul>
-      <h2> {{item.title}} </h2>
-       <ul>
-         <li> Titolo originale: {{item.original_title}} </li>
-         <li> Lingua: {{item.original_language}} </li>
-         <li> Voto: {{item.vote_average}} </li>   
-       </ul>
+      <img v-if="item.poster_path" :src="item.poster_path" alt="Poster" class="poster-image" />
+      <h2 v-if="item.hasOwnProperty('title')">{{ item.title }}</h2>
+      <h2 v-if="item.hasOwnProperty('name')">{{ item.name }}</h2>
+      <ul>
+        <li v-if="item.hasOwnProperty('original_title')">Titolo originale: {{ item.original_title }}</li>
+        <li v-if="item.hasOwnProperty('original_name')">Titolo originale: {{ item.original_name }}</li>
+        <li>Voto: {{ item.vote_average }}</li>
+        <li>Trama: {{ item.overview }}</li>
+      </ul>
     </div>
   </main>
 </template>
@@ -40,10 +25,13 @@ export default {
 </script>
 
 <style lang="scss">
-
  main{
   min-height: calc(100vh - 100px);
   background-color: rgb(170, 9, 44);
+  .poster-image {
+  width: 100%;
+  height: auto;
+}
    .card{
      height: 400px;
      width: 230px;

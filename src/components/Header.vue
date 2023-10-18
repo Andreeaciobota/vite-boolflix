@@ -16,7 +16,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'Header',
   data(){
@@ -33,7 +32,6 @@ export default {
 </script>
 
 <style lang="scss">
-
  header{
    height: 100px;
    background-color: black;
